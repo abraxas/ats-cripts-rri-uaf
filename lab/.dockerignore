@@ -1,0 +1,9 @@
+poc-last-run.txt
+__pycache__
+*.pyc
+.DS_Store
+origin
+etc
+cripts
+ats.dockerignore
+Dockerfile.ats-lab

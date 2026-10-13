@@ -1,0 +1,36 @@
+name: ats-cripts-rri-uaf
+
+services:
+  origin:
+    image: python:3.12-alpine
+    pull_policy: missing
+    init: true
+    restart: "no"
+    command: ["python", "-m", "http.server", "8080"]
+    working_dir: /www
+    volumes:
+      - ./origin:/www:ro
+
+  ats:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ats-cripts-rri-uaf:local
+    pull_policy: never
+    init: true
+    restart: "no"
+    depends_on:
+      - origin
+    environment:
+      ATS_ROOT: /opt/ats
+      LD_LIBRARY_PATH: /opt/ats/lib
+      LD_PRELOAD: /opt/ats/lib/libtsrandomstub.so
+      ASAN_OPTIONS: detect_leaks=0:abort_on_error=1:halt_on_error=1:detect_stack_use_after_return=1:symbolize=1
+    ports:
+      - "127.0.0.1:18780:8080"
+    volumes:
+      - ./etc/remap.config:/opt/ats/etc/trafficserver/remap.config:ro
+      - ./etc/records.yaml:/opt/ats/etc/trafficserver/records.yaml:ro
+      - ./etc/storage.config:/opt/ats/etc/trafficserver/storage.config:ro
+      - ./cripts/control.cript:/opt/ats/etc/trafficserver/control.cript:ro
+      - ./cripts/poc.cript:/opt/ats/etc/trafficserver/poc.cript:ro

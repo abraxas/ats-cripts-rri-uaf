@@ -1,0 +1,12 @@
+#include <cripts/Preamble.hpp>
+
+do_send_response()
+{
+  borrow resp = cripts::Client::Response::Get();
+  borrow url  = cripts::Client::URL::Get();
+
+  resp["X-Lab-Control"] = "ok";
+  resp["X-Lab-Host"]    = url.host.GetSV();
+}
+
+#include <cripts/Epilogue.hpp>

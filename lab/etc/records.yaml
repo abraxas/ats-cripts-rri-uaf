@@ -1,0 +1,24 @@
+records:
+  diags:
+    debug:
+      enabled: 1
+      tags: plugin|cripts
+    output:
+      debug: E
+      error: E
+      fatal: E
+      note: E
+      warning: E
+  exec_thread:
+    autoconfig:
+      enabled: 0
+    limit: 1
+  http:
+    cache:
+      http: 0
+    server_ports: 8080
+  plugin:
+    compiler_path: /opt/ats/bin/compiler.sh
+    dynamic_reload_mode: 1
+  url_remap:
+    remap_required: 1

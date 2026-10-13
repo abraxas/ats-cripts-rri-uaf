@@ -1,0 +1,13 @@
+#include <cripts/Preamble.hpp>
+
+do_send_response()
+{
+  borrow resp = cripts::Client::Response::Get();
+  borrow from = cripts::Remap::From::URL::Get();
+  borrow to   = cripts::Remap::To::URL::Get();
+
+  resp["X-Lab-From"] = from.host.GetSV();
+  resp["X-Lab-To"]   = to.host.GetSV();
+}
+
+#include <cripts/Epilogue.hpp>
