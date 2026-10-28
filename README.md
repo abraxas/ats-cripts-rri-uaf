@@ -13,6 +13,10 @@
   &nbsp;·&nbsp;
   <a href="https://github.com/abraxas/ats-cripts-rri-uaf">ats-cripts-rri-uaf</a>
 </p>
+<p align="center">
+  Write-up: <a href="https://abraxaslabs.tech/research/ats-cripts-rri-uaf"><strong>https://abraxaslabs.tech/research/ats-cripts-rri-uaf</strong></a>
+</p>
+
 
 # ats-cripts-rri-uaf
 
